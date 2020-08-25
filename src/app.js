@@ -68,7 +68,7 @@ app.put("/repositories/:id", (request, response) => {
     likes
   };
 
-  return response.status(204).json();
+  return response.json(repositories[repoIndex]);
 });
 
 app.delete("/repositories/:id", (request, response) => {
@@ -84,7 +84,7 @@ app.delete("/repositories/:id", (request, response) => {
 
 app.post("/repositories/:id/like", (request, response) => {
   const { id } = request.params;
-  
+
   const repoIndex = repositories.findIndex(repo => repo.id === id);
 
   const { title, url, techs, likes }  = repositories[repoIndex]; 
